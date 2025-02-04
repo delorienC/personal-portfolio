@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 //navigation
 document.addEventListener("click", (e) => {
+  console.log("test");
   if (e.target.classList.contains("mobile-scroll-link")
     || e.target.classList.contains("tablet-scroll-link")) {
     e.preventDefault();
@@ -27,34 +28,21 @@ document.addEventListener("click", (e) => {
 
 
 //section about
-gsap.from(".gsap-animate-about", {
-  opacity: 0,
-  scale: 0.9,
-  duration: 1,
-  scrollTrigger: {
-    trigger: ".gsap-animate-about",
-    start: "top 80%",
-    end: "top 30%",
-    //Keywords: play, pause, resume, reverse, restart, complete, reset
-    //Order: onEnter, onLeave, onEnterBack, onLeaveBack. 
-    toggleActions: "play none none none",
-  },
+gsap.utils.toArray(".gsap-animate-about, .gsap-animate-collection").forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    scale: 0.9,
+    duration: 1,
+    scrollTrigger: {
+      trigger: el,
+      start: "top 80%",
+      end: "top 30%",
+      toggleActions: "play none none none",
+      //markers: true,
+    },
+  });
 });
 
-//section collection
-gsap.from(".gsap-animate-collection", {
-  opacity: 0,
-  scale: 0.9,
-  duration: 1,
-  scrollTrigger: {
-    trigger: ".gsap-animate-collection",
-    start: "top 80%",
-    end: "top 30%",
-    //Keywords: play, pause, resume, reverse, restart, complete, reset
-    //Order: onEnter, onLeave, onEnterBack, onLeaveBack.  
-    toggleActions: "play none none reverse",
-  },
-});
 
 //section curriculum vitae
 gsap.from(".gsap-animate-cv", {
@@ -68,23 +56,8 @@ gsap.from(".gsap-animate-cv", {
     //Keywords: play, pause, resume, reverse, restart, complete, reset
     //Order: onEnter, onLeave, onEnterBack, onLeaveBack.  
     toggleActions: "play none none none",
+    //markers: true,
   },
-});
-
-//section cv_part
-document.querySelectorAll(".gsap-animate-cv-part").forEach((cv_part) => {
-  gsap.from(cv_part, {
-    opacity: 0,
-    scale: 0.8,
-    scrollTrigger: {
-      trigger: cv_part,
-      start: "top 80%",
-      end: "top 10%",
-      //Keywords: play, pause, resume, reverse, restart, complete, reset
-      //Order: onEnter, onLeave, onEnterBack, onLeaveBack.      
-      toggleActions: "play reverse play reverse",
-    },
-  })
 });
 
 //section experiences
@@ -100,6 +73,24 @@ document.querySelectorAll(".gsap-animate-experiences").forEach((experience) => {
       //Keywords: play, pause, resume, reverse, restart, complete, reset
       //Order: onEnter, onLeave, onEnterBack, onLeaveBack.      
       toggleActions: "play reverse play reverse",
+      //markers: true,
+    },
+  })
+});
+
+//section cv_part
+document.querySelectorAll(".gsap-animate-cv-part").forEach((cv_part) => {
+  gsap.from(cv_part, {
+    opacity: 0,
+    scale: 0.8,
+    scrollTrigger: {
+      trigger: cv_part,
+      start: "top 80%",
+      end: "top 10%",
+      //Keywords: play, pause, resume, reverse, restart, complete, reset
+      //Order: onEnter, onLeave, onEnterBack, onLeaveBack.      
+      toggleActions: "play reverse play reverse",
+      //markers: true,
     },
   })
 });
@@ -116,5 +107,6 @@ gsap.from(".gsap-animate-contact", {
     //Keywords: play, pause, resume, reverse, restart, complete, reset
     //Order: onEnter, onLeave, onEnterBack, onLeaveBack.
     toggleActions: "play none none reverse",
+    //markers: true,
   },
 });

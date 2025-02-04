@@ -45,7 +45,7 @@
             </div>
             <!-- Mobile menu. -->
             <div id="mobile-menu" class="flex items-center justify-center w-full">
-                <div x-data="{ open: false }" class="lg:hidden md:hidden sm:hidden w-full">
+                <div x-data="{ open: false }" x-init="open = false" class="lg:hidden md:hidden sm:hidden w-full">
                     <button @click="open = !open" class="p-2 w-full">☰</button>
                     <ul x-show="open" class="w-full bg-gray-900 text-white p-0 text-center space-y-2" x-transition>
                         <li>
@@ -86,14 +86,13 @@
             </h1>
         </section>
         <!-- About me Block-->
-        <section class="md:block max-w-[100%] mx-auto text-center">
+        <section class="gsap-animate-about md:block max-w-[100%] mx-auto text-center">
             <div class="grid grid-cols-1 md:grid-cols-2 justify-center p-4 gap-4">
-                <div class="gsap-animate-about rounded-3xl justify-center items-center overflow-hidden grid">
+                <div class="rounded-3xl justify-center items-center overflow-hidden grid">
                     <img class="w-full h-full object-cover" src="{{ asset('images/JohnDoeInOffice.jpg') }}"
                         alt="John Doe">
                 </div>
-                <div
-                    class="gsap-animate-about rounded-3xl p-5 lg:py-10 justify-center items-center text-justify bg-gray-900 text-white">
+                <div class="rounded-3xl p-5 lg:py-10 justify-center items-center text-justify bg-gray-900 text-white">
                     <h2 class="text-center">About Me</h2>
                     <p class="text-sm xl:text-2xl lg:text-xl md:text-sm">
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
@@ -108,10 +107,9 @@
             </div>
         </section>
         <!-- Collection Block -->
-        <section class="md:block max-w-[100%] mx-auto text-center">
+        <section class="gsap-animate-collection md:block max-w-[100%] mx-auto text-center">
             <div class="grid grid-cols-1 md:grid-cols-2 justify-center p-4 gap-4">
-                <div
-                    class="gsap-animate-collection rounded-3xl p-5 lg:py-10 justify-center items-center text-justify bg-amber-600 text-white">
+                <div class="rounded-3xl p-5 lg:py-10 justify-center items-center text-justify bg-amber-600 text-white">
                     <h2 class="text-center">Template collection</h2>
                     <p class="text-sm xl:text-2xl lg:text-xl md:text-sm">
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
@@ -123,7 +121,7 @@
                         ipsum dolor sit amet.
                     </p>
                 </div>
-                <div class="gsap-animate-collection rounded-3xl justify-center items-center overflow-hidden">
+                <div class="rounded-3xl justify-center items-center overflow-hidden">
                     <img class="w-full h-full object-cover" src="{{ asset('images/templates.webp') }}" alt="John Doe">
                 </div>
             </div>
@@ -137,7 +135,28 @@
             <section class="w-full mx-auto text-center text-amber-600 p-2">
                 <div class="p-2 gap-4 grid grid-cols-2 sm:grid-cols-3 justify-center items-center">
                     @foreach ($experiences as $experience)
-                        <x-portfolio.experience-block :procent="$experience['procent']" :experience="$experience['experience']" />
+                        <div class="gsap-animate-experiences">
+                            <div class="w-full items-center justify-center">
+                                <div class="bg-white rounded-3xl p-0">
+                                    {{-- <x-svg.progressbar-48 progress="{{ $experience['procent'] }}"
+                                        iconlogo="{{ $experience['experience'] }}" /> --}}
+                                    <svg class="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
+                                        <!-- Icon links -->
+                                        <image
+                                            href="{{ asset('images/icons8-' . $experience['experience'] . '-48.png') }}"
+                                            x="5" y="5" height="40" width="40" />
+
+                                        <!-- Background of the progress bar -->
+                                        <rect x="50" y="20" width="140" height="10" fill="lightgray"
+                                            rx="5" />
+
+                                        <!-- Progress indicator -->
+                                        <rect x="50" y="20" width="{{ $experience['procent'] * 1.4 }}" height="10"
+                                            fill="blue" rx="5" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
             </section>
@@ -166,9 +185,20 @@
                             $anchor = 'start';
                         @endphp
                         @foreach ($cvlist as $cv)
-                            <x-portfolio.cv-entrys cx="300" :cy="$cy" :x="$x" :y="$y"
-                                :from="$cv['from']" :to="$cv['to']" :company="$cv['company']" :position="$cv['position']"
-                                :anchor="$anchor" />
+                            <g class="gsap-animate-cv-part entry">
+                                <circle cx="300" cy="{{ $cy }}" r="6" fill="white" />
+                                <text text-anchor="{{ $anchor }}" fill="white">
+                                    <tspan x="{{ $x }}" y="{{ $y }}"
+                                        class="text-[2rem] md:text-[1.5rem] lg:text-[1.2rem]">
+                                        {{ $cv['from'] }} - {{ $cv['to'] }}</tspan>
+                                    <tspan x="{{ $x }}" dy="1.2em"
+                                        class="text-[2rem] md:text-[1.5rem] lg:text-[1.2rem]">
+                                        {{ $cv['company'] }}</tspan>
+                                    <tspan x="{{ $x }}" dy="1.2em"
+                                        class="text-[2rem] md:text-[1.5rem] lg:text-[1.2rem]">
+                                        {{ $cv['position'] }} </tspan>
+                                </text>
+                            </g>
                             @php
                                 if ($anchor == 'start') {
                                     $anchor = 'end';
@@ -192,14 +222,15 @@
                 <!-- Networt Links -->
                 <div class="gsap-animate-contact">
                     <div class="md:block w-full mx-auto text-center p-4">
-                        <x-portfolio.network-link-pics link="https://www.linkedin.com/" name="linkedin" />
-                        <x-portfolio.network-link-pics link="https://www.xing.com/" name="xing" />
-                        <x-portfolio.network-link-pics link="https://www.x.com/" name="linkedin" />
-                        <x-portfolio.network-link-pics link="https://www.github.com/" name="github" />
-                        <x-portfolio.network-link-pics link="https://www.instagram.com/" name="instagram" />
-                        <x-portfolio.network-link-pics link="https://www.facebook.com/" name="facebook" />
-                        <x-portfolio.network-link-pics link="https://www.tikok.com/" name="tick-tack" />
-                        <x-portfolio.network-link-pics link="https://www.mastodon.de/" name="mastodon" />
+                        @foreach ($contact2networks as $network)
+                            <a href="{{ $network['link'] }}" target="_blank" class="inline-block">
+                                <img class="hidden lg:block"
+                                    src="{{ asset('images/icons8-' . $network['title'] . '-96.png') }}"
+                                    alt="{{ $network['title'] }}" class="hover:opacity-80">
+                                <img class="block lg:hidden"src="{{ asset('images/icons8-' . $network['title'] . '-48.png') }}"
+                                    alt="{{ $network['title'] }}" class="hover:opacity-80">
+                            </a>
+                        @endforeach
                     </div>
                 </div>
                 <!-- Contact Formular -->

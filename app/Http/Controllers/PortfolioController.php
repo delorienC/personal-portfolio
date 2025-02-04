@@ -39,6 +39,16 @@ class PortfolioController extends Controller
             ['from'=>'1988','to'=>'1990','company'=>'CodeCraft', 'position'=>'Junior Developer'],
         ];
 
+        $contact2networks = [
+            ['title'=>'github','link'=>'https://github.com/'],
+            ['title'=>'linkedin','link'=>'https://www.linkedin.com/'],
+            ['title'=>'xing','link'=>'https://www.xing.com/'],
+            ['title'=>'instagram','link'=>'https://www.instagram.com/'],      
+            ['title'=>'facebook','link'=>'https://www.facebook.com/'],
+            ['title'=>'tick-tack','link'=>'https://www.tiktok.com/'],
+            ['title'=>'mastodon','link'=>'https://mastodon.de/']
+        ];
+
         $contactfields = [
             ['title'=>'First Name','type'=>'text', 'name'=>'given_name', 'required'=>'required'],
             ['title'=>'Last Name','type'=>'text', 'name'=>'family_name', 'required'=>'required'],
@@ -46,6 +56,6 @@ class PortfolioController extends Controller
             ['title'=>'Email','type'=>'email', 'name'=>'email', 'required'=>'required'],
             ['title'=>'Phone','type'=>'tel', 'name'=>'tel', 'required'=>'required'],
         ];
-        return view('portfolio', compact('experiences', 'cvlist', 'contactfields'));
+        return view('portfolio', compact('experiences', 'cvlist', 'contactfields', 'contact2networks'));
     }
 }
