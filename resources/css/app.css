@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+@layer base {
+  h1 {
+    @apply font-semibold font-custom text-[32px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+           leading-[48px] p-2 lg:p-12;
+  }
+
+  h2 {
+    @apply font-semibold leading-snug p-2 xl:p-6 xl:text-5xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-base lg:text-2xl font-medium leading-normal p-6;
+  }
+
+  div {
+    @apply text-2xl font-medium leading-normal;
+  }
+
+  text, label {
+    @apply text-2xl font-medium leading-normal;
+  }
+
+  body {
+    @apply bg-white font-custom;
+  }
+
+  /* html {
+    //@apply scroll-smooth
+  } */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
