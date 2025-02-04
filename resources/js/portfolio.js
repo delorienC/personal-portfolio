@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 //navigation
 document.addEventListener("click", (e) => {
-  console.log("test");
   if (e.target.classList.contains("mobile-scroll-link")
     || e.target.classList.contains("tablet-scroll-link")) {
     e.preventDefault();
