@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="{{ asset('build/assets/fallback.css') }}"> --}}
     @endif
 </head>
-{{-- TODO -- Delete all the blade files and extension you don't need --}}
 
 <body class="bg-white" id="home">
     <!-- Header -->
@@ -28,17 +27,13 @@
             <div id="tablet-menu" class="hidden flex-1 items-center justify-center sm:flex">
                 <div class="">
                     <div class="flex space-x-4 bg-black rounded-full p-3">
-                        <a href="#home"
-                            class="rounded-full px-3 py-2 text-xl font-medium text-gray-300 hover:bg-white hover:text-black tablet-scroll-link"
+                        <a href="#home" class="rounded-full px-3 py-2 navigation-text-sm tablet-scroll-link"
                             aria-current="page">Home</a>
-                        <a href="#experience"
-                            class="rounded-full px-3 py-2 text-xl font-medium text-gray-300 hover:bg-white hover:text-black tablet-scroll-link">
+                        <a href="#experience" class="rounded-full px-3 py-2 navigation-text-sm tablet-scroll-link">
                             Experience</a>
-                        <a href="#cv"
-                            class="rounded-full px-3 py-2 text-xl font-medium text-gray-300 hover:bg-white hover:text-black tablet-scroll-link">
+                        <a href="#cv" class="rounded-full px-3 py-2 navigation-text-sm tablet-scroll-link">
                             CV</a>
-                        <a href="#contact"
-                            class="rounded-full px-3 py-2 text-xl font-medium text-gray-300 hover:bg-white hover:text-black tablet-scroll-link">
+                        <a href="#contact" class="rounded-full px-3 py-2 navigation-text-sm tablet-scroll-link">
                             Contact</a>
                     </div>
                 </div>
@@ -49,25 +44,25 @@
                     <button @click="open = !open" class="p-2 w-full">☰</button>
                     <ul x-show="open" class="w-full bg-gray-900 text-white p-0 text-center space-y-2" x-transition>
                         <li>
-                            <a href="#home" class="block hover:text-gray-400 mobile-scroll-link py-2"
+                            <a href="#home" class="block hover:text-gray-400 py-2 mobile-scroll-link"
                                 @click="open = false">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="#experience" class="block hover:text-gray-400 mobile-scroll-link py-2"
+                            <a href="#experience" class="block hover:text-gray-400 py-2 mobile-scroll-link"
                                 @click="open = false">
                                 Experience
                             </a>
                         </li>
                         <li>
-                            <a href="#cv" class="block hover:text-gray-400 mobile-scroll-link py-2"
+                            <a href="#cv" class="block hover:text-gray-400 py-2 mobile-scroll-link"
                                 @click="open = false">
                                 CV
                             </a>
                         </li>
                         <li>
-                            <a href="#contact" class="block hover:text-gray-400 mobile-scroll-link py-2"
+                            <a href="#contact" class="block hover:text-gray-400 py-2 mobile-scroll-link"
                                 @click="open = false">
                                 Contact
                             </a>
@@ -244,11 +239,18 @@
                                 <div class="mt-2">
                                     <input type="text" name="{{ $contactfield['name'] }}"
                                         id="{{ $contactfield['name'] }}" autocomplete="{{ $contactfield['name'] }}"
-                                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                        class="block w-full rounded-md px-3 py-1.5 bg-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600  sm:text-sm/6"
                                         {{ $contactfield['required'] }}>
                                 </div>
                             </div>
                         @endforeach
+                        <div class="sm:col-span-3">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message"
+                                class="block w-full rounded-md px-3 py-1.5 bg-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600  sm:text-sm/6">
+
+                            </textarea>
+                        </div>
                         <div class="sm:col-span-3">
                             <p class="block">*You have to fill all Fields</p>
                             <div>
