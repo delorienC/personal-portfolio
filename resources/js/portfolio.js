@@ -37,7 +37,6 @@ gsap.utils.toArray(".gsap-animate-about, .gsap-animate-collection").forEach((el)
       start: "top 80%",
       end: "top 30%",
       toggleActions: "play none none none",
-      //markers: true,
     },
   });
 });
@@ -51,11 +50,9 @@ gsap.from(".gsap-animate-cv", {
   scrollTrigger: {
     trigger: ".gsap-animate-cv",
     start: "top 70%",
-    //end: "top 30%",
     //Keywords: play, pause, resume, reverse, restart, complete, reset
     //Order: onEnter, onLeave, onEnterBack, onLeaveBack.  
     toggleActions: "play none none none",
-    //markers: true,
   },
 });
 
@@ -72,7 +69,6 @@ document.querySelectorAll(".gsap-animate-experiences").forEach((experience) => {
       //Keywords: play, pause, resume, reverse, restart, complete, reset
       //Order: onEnter, onLeave, onEnterBack, onLeaveBack.      
       toggleActions: "play reverse play reverse",
-      //markers: true,
     },
   })
 });
@@ -89,7 +85,6 @@ document.querySelectorAll(".gsap-animate-cv-part").forEach((cv_part) => {
       //Keywords: play, pause, resume, reverse, restart, complete, reset
       //Order: onEnter, onLeave, onEnterBack, onLeaveBack.      
       toggleActions: "play reverse play reverse",
-      //markers: true,
     },
   })
 });
@@ -106,6 +101,5 @@ gsap.from(".gsap-animate-contact", {
     //Keywords: play, pause, resume, reverse, restart, complete, reset
     //Order: onEnter, onLeave, onEnterBack, onLeaveBack.
     toggleActions: "play none none reverse",
-    //markers: true,
   },
 });

@@ -18,7 +18,7 @@
     @endif
 </head>
 
-<body class="bg-white" id="home">
+<body id="home">
     <!-- Header -->
     <header class="sticky top-0 z-50 shadow-md bg-white">
         <!-- Navigation Browser Menu -->
@@ -133,8 +133,6 @@
                         <div class="gsap-animate-experiences">
                             <div class="w-full items-center justify-center">
                                 <div class="bg-white rounded-3xl p-0">
-                                    {{-- <x-svg.progressbar-48 progress="{{ $experience['procent'] }}"
-                                        iconlogo="{{ $experience['experience'] }}" /> --}}
                                     <svg class="w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50">
                                         <!-- Icon links -->
                                         <image

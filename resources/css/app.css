@@ -28,8 +28,8 @@
   }
 
   .navigation-text-sm {
-    @apply text-xl font-medium text-gray-300 hover:bg-white hover:text-black;
-  }
+    @apply text-xl font-medium text-gray-300 hover:bg-white hover:text-black focus:bg-white focus:text-black;
+}
 
   .formular-text {
     @aplly text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400;
