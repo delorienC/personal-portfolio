@@ -230,8 +230,8 @@
                 </div>
                 <!-- Contact Formular -->
                 <form action="#"
-                    class="flex justify-center items-center transition duration-500 transform -translate-y-100">
-                    <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 w-[80%] text-center p-6">
+                    class="grid justify-center items-center transition duration-500 transform -translate-y-100">
+                    <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 w-full text-center p-6">
                         @foreach ($contactfields as $contactfield)
                             <div class="sm:col-span-3">
                                 <label for="{{ $contactfield['name'] }}"
@@ -239,27 +239,31 @@
                                 <div class="mt-2">
                                     <input type="text" name="{{ $contactfield['name'] }}"
                                         id="{{ $contactfield['name'] }}" autocomplete="{{ $contactfield['name'] }}"
-                                        class="block w-full rounded-md px-3 py-1.5 bg-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600  sm:text-sm/6"
+                                        class="block w-full rounded-md px-3 py-1.5 bg-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"
                                         {{ $contactfield['required'] }}>
                                 </div>
                             </div>
                         @endforeach
-                        <div class="sm:col-span-3">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message"
-                                class="block w-full rounded-md px-3 py-1.5 bg-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600  sm:text-sm/6">
 
-                            </textarea>
+                        <!-- Message Field -->
+                        <div class="sm:col-span-6">
+                            <label for="message" class="block">Message</label>
+                            <textarea name="message" id="message"
+                                class="block w-full h-32 rounded-md px-3 py-1.5 bg-white focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm"></textarea>
                         </div>
-                        <div class="sm:col-span-3">
-                            <p class="block">*You have to fill all Fields</p>
-                            <div>
+
+                        <div class="sm:col-span-6 text-center">
+                            <p class="block">*Please complete these fields.</p>
+                            <div class="mt-2">
                                 <button name="submit" type="submit"
-                                    class="flex w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Send</button>
+                                    class="grid w-full justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                    Send
+                                </button>
                             </div>
                         </div>
                     </div>
                 </form>
+
             </div>
         </section>
     </main>
